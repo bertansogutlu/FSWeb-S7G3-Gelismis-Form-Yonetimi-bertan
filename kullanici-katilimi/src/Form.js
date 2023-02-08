@@ -26,6 +26,21 @@ export default function FormDocument() {
             </div>
 
             <div>
+            <label for="email-id">E-Mail</label>
+            <input type="email" id="email-id" name="email" />
+            </div>
+
+            <div>
+            <label for="password-id">Şifre</label>
+            <input type="password" id="password-id" name="password" />
+            </div>
+
+            <div>
+            <label for="checkbox-id">Kullanım Şartları</label>
+            <input type="checkbox" id="checkbox-id" name="checkbox" />
+            </div>
+
+            <div>
             <input type="submit" value="Submit" />
             </div>
         </Form>
