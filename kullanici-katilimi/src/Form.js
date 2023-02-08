@@ -21,6 +21,7 @@ export default function FormDocument() {
     function handleChange(event) {
         setPerson({ ...person, [event.target.name]: event.target.value })
         console.log(person)
+        console.log(event.target.name, event.target.value, event.target.checked)
     }
 
     function submit(event) {
@@ -29,7 +30,7 @@ export default function FormDocument() {
         console.log(data)
     }
 
-    function reset(event) {
+    function reset() {
         setPerson({})
         console.log(data)
     }
@@ -54,29 +55,29 @@ export default function FormDocument() {
 
             <div>
                 <label htmlFor="password-id">Şifre</label>
-                <input type="password" id="password-id" name="password" onChange={handleChange} />
+                <input type="password" id="password-id" name="password" value={person.password} onChange={handleChange} />
             </div>
 
             <div>
                 <label htmlFor="checkbox-id">Kullanım Şartları</label>
-                <input type="checkbox" id="checkbox-id" name="checkbox" onChange={handleChange} />
+                <input type="checkbox" id="checkbox-id" name="termsOfService" value={person.checked} checked={person.checked} onChange={handleChange} />
             </div>
 
             <div>
                 Bizi nereden duydunuz?
                 <label>
                     Instagram
-                    <input type="radio" id="checkbox-1-id" name="checkbox" onChange={handleChange} />
+                    <input type="radio" id="radio-id-1" name="question" value="Instagram" checked={person.question === "Instagram"} onChange={handleChange} />
                 </label>
 
                 <label>
                     Linkedin
-                    <input type="radio" name="checkbox-2-id" onChange={handleChange} />
+                    <input type="radio" id="radio-id-2" name="question" value="Linkedin" checked={person.question === "Linkedin"} onChange={handleChange} />
                 </label>
 
                 <label>
                     Twitter
-                    <input type="radio" name="checkbox-3-id" onChange={handleChange} />
+                    <input type="radio" id="radio-id-3" name="question" value="Twitter" checked={person.question === "Twitter"} onChange={handleChange} />
                 </label>
             </div>
 
