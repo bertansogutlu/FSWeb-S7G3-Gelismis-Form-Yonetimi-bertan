@@ -21,8 +21,9 @@ export default function FormDocument() {
 
     function handleChange(event) {
         setPerson({ ...person, [event.target.name]: event.target.type === "checkbox" ? event.target.checked : event.target.value});
-        console.log(person);
     }
+
+    console.log(person);
 
     function submit(event) {
         event.preventDefault();
@@ -33,8 +34,9 @@ export default function FormDocument() {
             }
         }
         setData([...data, person])
-        console.log(data)
     }
+
+    console.log(data)
 
     function reset() {
         setPerson(initial)
