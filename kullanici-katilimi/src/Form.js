@@ -15,7 +15,7 @@ display: block;
 
 export default function FormDocument() {
 
-    const initial = {question : '', email : '', name : '', surname : '', password: '', termsOfService : false};
+    const initial = {name : '', surname : '', email : '', password: '', termsOfService : false, question : ''};
     const [data, setData] = useState([]);
     const [person, setPerson] = useState(initial);
 
@@ -26,6 +26,12 @@ export default function FormDocument() {
 
     function submit(event) {
         event.preventDefault();
+        for (let datum in person) {
+            if (!person[datum]) {
+                alert(`Lutfen ${datum}  alanını doldurunuz.`);
+                return
+            }
+        }
         setData([...data, person])
         console.log(data)
     }
