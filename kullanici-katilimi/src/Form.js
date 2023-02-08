@@ -20,8 +20,8 @@ export default function FormDocument() {
     const [person, setPerson] = useState(initial);
 
     function handleChange(event) {
-        (event.target.type === "checkbox") ? setPerson({ ...person, [event.target.name]: event.target.checked }) : setPerson({ ...person, [event.target.name]: event.target.value });
-        console.log(person)
+        setPerson({ ...person, [event.target.name]: event.target.type === "checkbox" ? event.target.checked : event.target.value});
+        console.log(person);
     }
 
     function submit(event) {
