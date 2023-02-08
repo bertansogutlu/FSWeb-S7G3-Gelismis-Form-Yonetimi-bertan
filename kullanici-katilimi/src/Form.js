@@ -28,7 +28,7 @@ export default function FormDocument() {
         event.preventDefault();
         for (let datum in person) {
             if (!person[datum]) {
-                alert(`Lutfen ${datum}  alanını doldurunuz.`);
+                alert(`Lutfen ${datum} alanını doldurunuz.`);
                 return
             }
         }
