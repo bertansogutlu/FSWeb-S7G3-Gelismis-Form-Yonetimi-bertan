@@ -15,13 +15,13 @@ display: block;
 
 export default function FormDocument() {
 
+    const initial = {question : '', email : '', name : '', surname : '', password: '', termsOfService : false};
     const [data, setData] = useState([]);
-    const [person, setPerson] = useState({});
+    const [person, setPerson] = useState(initial);
 
     function handleChange(event) {
-        setPerson({ ...person, [event.target.name]: event.target.value })
+        (event.target.type === "checkbox") ? setPerson({ ...person, [event.target.name]: event.target.checked }) : setPerson({ ...person, [event.target.name]: event.target.value });
         console.log(person)
-        console.log(event.target.name, event.target.value, event.target.checked)
     }
 
     function submit(event) {
@@ -31,7 +31,7 @@ export default function FormDocument() {
     }
 
     function reset() {
-        setPerson({})
+        setPerson(initial)
         console.log(data)
     }
 
@@ -60,7 +60,7 @@ export default function FormDocument() {
 
             <div>
                 <label htmlFor="checkbox-id">Kullanım Şartları</label>
-                <input type="checkbox" id="checkbox-id" name="termsOfService" value={person.checked} checked={person.checked} onChange={handleChange} />
+                <input type="checkbox" id="checkbox-id" name="termsOfService" value="accept" checked={person.termsOfService} onChange={handleChange} />
             </div>
 
             <div>
