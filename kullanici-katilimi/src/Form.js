@@ -29,11 +29,12 @@ export default function FormDocument() {
         event.preventDefault();
         for (let datum in person) {
             if (!person[datum]) {
-                alert(`Lutfen ${datum} alanını doldurunuz.`);
+                alert(`Lutfen boş alanları doldurunuz.`);
                 return
             }
         }
-        setData([...data, person])
+        setData([...data, person]);
+        setPerson(initial);
     }
 
     console.log(data)
