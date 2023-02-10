@@ -15,7 +15,7 @@ display: block;
 
 export default function FormDocument() {
 
-    const initial = {name : '', surname : '', email : '', password: '', termsOfService : false, question : ''};
+    const initial = {firstname : '', surname : '', email : '', password: '', termsOfService : false, question : ''};
     const [data, setData] = useState([]);
     const [person, setPerson] = useState(initial);
 
