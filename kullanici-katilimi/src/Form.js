@@ -49,7 +49,7 @@ export default function FormDocument() {
             <h2>Formu eksiksiz doldurunuz.</h2>
             <div>
                 <label htmlFor="name-id">İsim</label>
-                <input type="text" id="name-id" name="name" value={person.name} onChange={handleChange} />
+                <input type="text" id="name-id" name="firstname" value={person.firstname} onChange={handleChange} />
             </div>
 
             <div>
@@ -69,7 +69,7 @@ export default function FormDocument() {
 
             <div>
                 <label htmlFor="checkbox-id">Kullanım Şartları</label>
-                <input type="checkbox" id="checkbox-id" name="termsOfService" value="accept" checked={person.termsOfService} onChange={handleChange} />
+                <input type="checkbox" id="checkbox-id" name="termsOfService" value="Accept" checked={person.termsOfService} onChange={handleChange} />
             </div>
 
             <div>
