@@ -21,7 +21,7 @@ const formSchema = Yup.object({
         /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
             'Sadece latin harfleri'
         ),
-    email: Yup.string().email(),
+    email: Yup.string().email("Lütfen geçerli bir mail girin"),
   });
 
 
@@ -32,6 +32,11 @@ export default function FormDocument() {
     const initial = {firstname : '', surname : '', email : '', password: '', termsOfService : false, question : ''};
     const [person, setPerson] = useState(initial);
     const {firstname, surname, email, password, termsOfService, question} = person;
+    const {formError, setFormError} = useState({
+        firstname : "",
+        surname : "",
+        email : "",
+    });
     
 
     function handleError(name, value) {
@@ -39,10 +44,18 @@ export default function FormDocument() {
         Yup.reach(formSchema, name)
         .validate(value)
         .then(() => {
-            console.log("Isim gecerli")
+            console.log("ok");
+            setFormError({
+                ...formError,
+                [name] : ""
+            });
         })
-        .catch(() => {
-            console.log("Isim gecersiz")
+        .catch((error) => {
+            console.log(error.errors[0]);
+            setFormError({
+                ...formError,
+                [name] : error.errors[0]
+            });
         })
 
     }
