@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import axios from 'axios';
 import * as Yup from 'yup';
 
 const Form = styled.form`
@@ -45,17 +46,17 @@ export default function FormDocument() {
         .validate(value)
         .then(() => {
             console.log("ok");
-            setFormError({
-                ...formError,
-                [name] : ""
-            });
+            // setFormError({
+            //     ...formError,
+            //     [name] : ""
+            // });
         })
         .catch((error) => {
             console.log(error.errors[0]);
-            setFormError({
-                ...formError,
-                [name] : error.errors[0]
-            });
+            // setFormError({
+            //     ...formError,
+            //     [name] : error.errors[0]
+            // });
         })
 
     }
@@ -76,10 +77,18 @@ export default function FormDocument() {
             }
         }
         setData([...data, person]);
-        setPerson(initial);
+        
+        axios.post('https://reqres.in/api/users', data)
+          .then(function (response) {
+            console.log(response);
+            setPerson(initial);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
-    console.log(data)
+    
 
     function reset() {
         setPerson(initial)
