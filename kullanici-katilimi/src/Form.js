@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import * as Yup from 'yup';
 
@@ -30,9 +31,18 @@ const formSchema = Yup.object({
 export default function FormDocument() {
 
     const [data, setData] = useState([]);
+
     const initial = {firstname : '', surname : '', email : '', password: '', termsOfService : false, question : ''};
     const [person, setPerson] = useState(initial);
+
     const {firstname, surname, email, password, termsOfService, question} = person;
+
+    const [buttonDisable, setButtonDisable] = useState(true);
+
+    useEffect(() => {
+        formSchema.isValid(person).then((valid) => setButtonDisable(!valid));
+      }, [person]);
+
     const [formError, setFormError] = useState({
         firstname : "",
         surname : "",
@@ -142,7 +152,7 @@ export default function FormDocument() {
             </div>
 
             <div>
-                <button type="submit" id="submit-id">Gönder</button>
+                <button type="submit" id="submit-id" disabled={buttonDisable}>Gönder</button>
                 <button type="button" id="reset-id" onClick={reset}>Temizle</button>
             </div>
         </Form>
