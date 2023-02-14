@@ -33,7 +33,7 @@ export default function FormDocument() {
     const initial = {firstname : '', surname : '', email : '', password: '', termsOfService : false, question : ''};
     const [person, setPerson] = useState(initial);
     const {firstname, surname, email, password, termsOfService, question} = person;
-    const {formError, setFormError} = useState({
+    const [formError, setFormError] = useState({
         firstname : "",
         surname : "",
         email : "",
@@ -46,17 +46,17 @@ export default function FormDocument() {
         .validate(value)
         .then(() => {
             console.log("ok");
-            // setFormError({
-            //     ...formError,
-            //     [name] : ""
-            // });
+            setFormError({
+                ...formError,
+                [name] : ""
+            });
         })
         .catch((error) => {
             console.log(error.errors[0]);
-            // setFormError({
-            //     ...formError,
-            //     [name] : error.errors[0]
-            // });
+            setFormError({
+                ...formError,
+                [name] : error.errors[0]
+            });
         })
 
     }
