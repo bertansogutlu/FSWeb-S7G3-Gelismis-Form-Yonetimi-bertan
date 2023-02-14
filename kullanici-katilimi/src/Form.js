@@ -65,6 +65,7 @@ export default function FormDocument() {
         firstname : "",
         surname : "",
         email : "",
+        password : "",
     });
     
 
@@ -129,21 +130,25 @@ export default function FormDocument() {
             <div>
                 <label htmlFor="name-id">İsim</label>
                 <input type="text" id="name-id" name="firstname" value={firstname} onChange={handleChange} />
+                {formError.firstname !== "" && <div style={{color: "red", display: "inline", marginLeft: "0.5rem"}}>{formError.firstname}</div>}
             </div>
-
+            
             <div>
                 <label htmlFor="surname-id">Soyisim</label>
                 <input type="text" id="surname-id" name="surname" value={surname} onChange={handleChange} />
+                {formError.surname !== "" && <div style={{color: "red", display: "inline", marginLeft: "0.5rem"}}>{formError.surname}</div>}
             </div>
 
             <div>
                 <label htmlFor="email-id">E-Mail</label>
                 <input type="email" id="email-id" name="email" value={email} onChange={handleChange} />
+                {formError.email !== "" && <div style={{color: "red", display: "inline", marginLeft: "0.5rem"}}>{formError.email}</div>}
             </div>
 
             <div>
                 <label htmlFor="password-id">Şifre</label>
                 <input type="password" id="password-id" name="password" value={password} onChange={handleChange} />
+                {formError.password !== "" && <div style={{color: "red", display: "inline", marginLeft: "0.5rem"}}>{formError.password}</div>}
             </div>
 
             <div>
