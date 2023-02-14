@@ -15,15 +15,31 @@ display: block;
 `;
 
 const formSchema = Yup.object({
-    firstname: Yup.string().required("Gerekli").matches(
+
+    firstname: Yup
+    .string()
+    .required("Gerekli")
+    .matches(
         /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
-            'Sadece latin harfleri'
+            'Sadece latin harfleri kullanınız'
         ),
-    surname: Yup.string().required("Gerekli").matches(
+
+    surname: Yup
+    .string()
+    .required("Gerekli")
+    .matches(
         /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
-            'Sadece latin harfleri'
+            'Sadece latin harfleri kullanınız'
         ),
-    email: Yup.string().email("Lütfen geçerli bir mail girin"),
+
+    email: Yup
+    .string()
+    .email("Lütfen geçerli bir mail giriniz"),
+
+    password: Yup
+    .string()
+    .min(8, 'Şifre en az 8 karakter uzunluğunda olmalı'),
+
   });
 
 
@@ -72,7 +88,7 @@ export default function FormDocument() {
     }
 
     function handleChange(event) {
-        (event.target.name === "firstname" || event.target.name === "surname" || event.target.name === "email") && handleError(event.target.name, event.target.value)
+        (event.target.name === "firstname" || event.target.name === "surname" || event.target.name === "email" || event.target.name === "password") && handleError(event.target.name, event.target.value)
         setPerson({ ...person, [event.target.name]: event.target.type === "checkbox" ? event.target.checked : event.target.value});
     }
 
