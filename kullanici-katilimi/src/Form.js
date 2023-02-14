@@ -18,7 +18,7 @@ const formSchema = Yup.object({
 
     firstname: Yup
     .string()
-    .required("Gerekli")
+    .required("Bu alan zorunludur")
     .matches(
         /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
             'Sadece latin harfleri kullanınız'
@@ -26,7 +26,7 @@ const formSchema = Yup.object({
 
     surname: Yup
     .string()
-    .required("Gerekli")
+    .required("Bu alan zorunludur")
     .matches(
         /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
             'Sadece latin harfleri kullanınız'
@@ -34,10 +34,12 @@ const formSchema = Yup.object({
 
     email: Yup
     .string()
+    .required("Bu alan zorunludur")
     .email("Lütfen geçerli bir mail giriniz"),
 
     password: Yup
     .string()
+    .required("Bu alan zorunludur")
     .min(8, 'Şifre en az 8 karakter uzunluğunda olmalı'),
 
   });
